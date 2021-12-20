@@ -97,7 +97,7 @@
 * Netsec focus: https://mm.netsecfocus.com/nsf/channels/general
 * Bug bounty notes: https://www.bugbountynotes.com/
 
-## Podcasts.md
+## Podcasts
 
 * Rally security: https://rallysecurity.com/
 * Security now: https://twit.tv/shows/security-now
