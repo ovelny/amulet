@@ -1,5 +1,5 @@
 # amulet
-Wiki and knowledge base for web security, linux &amp; more.
+Wiki and knowledge base for web pentesting, linux &amp; more.
 
 ## Convention rules
 
