@@ -41,6 +41,7 @@
 * Problem Solving with Algorithms and Data Structures using Python: https://runestone.academy/runestone/books/published/pythonds3/index.html
 * Leetcode study guide: https://www.reddit.com/r/cscareerquestions/comments/eb1e2b/my_leetcode_study_guide/
 * DIY Git in Python: https://www.leshenko.net/p/ugit/#
+* Comprehensive Python cheatsheet: https://gto76.github.io/python-cheatsheet/
 
 ## Recon
 
