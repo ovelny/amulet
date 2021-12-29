@@ -58,10 +58,10 @@ Let's now install base packages for this host: unless specified otherwise, those
 
 Those should already be present but better check:
 
-* `ruby`
-* `gnome-tweaks`
-* `git`
-* `gpg`
+* ruby
+* gnome-tweaks
+* git
+* gpg
 
 ## Ruby dependencies
 
