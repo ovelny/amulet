@@ -54,11 +54,19 @@ Let's now install base packages for this host: unless specified otherwise, those
 * qutebrowser
 * higan
 * age
+* htop
 * tree
 * tmux
 * pulseeffects
+* rsync
+* ncdu
+* wipe
 * tldr (then run tldr -u)
 * bullseye-backports: pipx
+
+```bash
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux pulseeffects rsync ncdu wipe tldr pipx/bullseye-backports && sudo ufw enable && tldr -u
+```
 
 Those packages should already be present but check anyway:
 
@@ -133,9 +141,32 @@ Go to https://extensions.gnome.org/ (with firefox), install the extension and in
 
 Enable them all except hide clock and check results.
 
+Next: 
+
+* Go to gnome tweaks > appearance > applications and select adwaita dark.
+* Go to gnome tweaks > fonts and select hinting: full and antialiasing: subpixel.
+* Go to accessibility > repeat keys and reduce repeat delay (roughly by half).
+
 ## Restore SSH and GPG keys
 
-You know where to find your keys. Once you got them, restore them and set them as default with the following commands:
+You know where to find your keys.
+
+For SSH:
+
+* Place your keys in `~/.ssh`
+* `chmod 600 ~/.ssh/id_rsa`
+* `chmod 600 ~/.ssh/id_rsa.pub`
+* `ssh-add`
+
+For GPG:
+
+* Save secret & public keys in a temporary location
+* `gpg --import <mygpgkey_pub.gpg>`
+* `gpg --allow-secret-key-import --import <mygpgkey_sec.gpg>`
+* Run `gpg --edit-key ovelny@protonmail.com`
+* Run `trust` in gpg prompt and select ultimate trust (5)
+* Run `gpg --list-secret-keys` to check trust has changed
+* Delete keys in temporary location
 
 ## Restic config and restore
 
@@ -147,10 +178,21 @@ The following directories should be synced with syncthing:
 
 ## Clone some repositories
 
-vim-cursed
-amulet
-blog
+```bash
+mkdir ~/code && cd ~/code
+git clone git@github.com:ovelny/vim-cursed.git
+git clone git@github.com:ovelny/amulet.git
+git clone git@github.com:ovelny/vessel.git
+cd vessel && mkdir output && cd output
+git clone git@github.com:ovelny/ovelny.github.io.git
+```
 
-## Install vim plugins
+## Set up .vimrc and install vim plugins
+
+```bash
+ln -s /home/<user>/code/vim-cursed/.vimrc /home/<user>/
+```
 
 ## Configure pulseeffects
+
+## Configure qutebrowser certs
