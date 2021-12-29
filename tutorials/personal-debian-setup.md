@@ -53,15 +53,20 @@ Let's now install base packages for this host: unless specified otherwise, those
 * sct
 * qutebrowser
 * higan
+* age
+* tree
+* tmux
+* pulseeffects
 * tldr (then run tldr -u)
 * bullseye-backports: pipx
 
-Those should already be present but better check:
+Those packages should already be present but check anyway:
 
 * ruby
 * gnome-tweaks
 * git
 * gpg
+* chrome-gnome-shell
 
 ## Ruby dependencies
 
@@ -90,23 +95,55 @@ Set browser to librewolf and music + video to mpv. That's it.
 
 ## Change shell to zsh
 
-## Set autostart scripts
+```bash
+chsh -s $(which zsh)
+```
+
+Restart shell and check with `echo $ZSH_VERSION` that it worked.
+
+## Restore dotfiles
+
+Start by restoring dotfiles: we'll have to launch syncthing manually once, before the autostart file takes over after this step.
+
+Run `syncthing` (remove default folder too) and start syncing the `~/.dotfiles` directory. In advanced options, choose to ignore syncing permissions.
+
+Then sync the `~/bin` in the same way and run `chmod +x ~/bin/dot`.
+
+Run `~/bin/dot install` and reboot. The updated zsh theme and automatic syncthing startup should be proof enough that your dotfiles are restored.
 
 ## Configure custom shortcuts
 
+* Set launch calculator to super + c
+* Set text editor to super + t
+* Set launch terminal to ctrl + alt + t
+* Set switch applications to disabled
+* Set switch windows to alt + tab
+* Set save a screenshot to pictures to super + print
+* Set lock screen to ctrl + alt + l
+* Set maximize window to ctrl + alt + y
+
 ## Configure gnome tweaks and extensions
 
-Reduce keyboard repeat delay
+Go to https://extensions.gnome.org/ (with firefox), install the extension and install the following:
 
-## Sync main directories with syncthing
+* https://extensions.gnome.org/extension/949/bottompanel/
+* https://extensions.gnome.org/extension/1128/hide-activities-button/
+* https://extensions.gnome.org/extension/1110/hide-clock/
+* https://extensions.gnome.org/extension/723/pixel-saver/
 
-## Restic config and restore
-
-## Restore dotfiles
+Enable them all except hide clock and check results.
 
 ## Restore SSH and GPG keys
 
 You know where to find your keys. Once you got them, restore them and set them as default with the following commands:
+
+## Restic config and restore
+
+## Sync main directories with syncthing
+
+The following directories should be synced with syncthing:
+
+* Lorem
 
 ## Clone some repositories
 
@@ -115,3 +152,5 @@ amulet
 blog
 
 ## Install vim plugins
+
+## Configure pulseeffects
