@@ -34,27 +34,27 @@ In case your `sources.list` file gets messed up, refer to the examples here: htt
 
 Let's now install base packages for this host: unless specified otherwise, those can be installed from `stable`.
 
-* `python3-pip`
-* `vim-nox`
-* `syncthing`
-* `kitty`
-* `restic`
-* `keepassxc`
-* `qemu-system`
-* `fzf`
-* `ufw` (then run sudo ufw enable)
-* `zsh`
-* `zsh-autosuggestions`
-* `zsh-syntax-highlighting`
-* `imagemagick`
-* `libimage-exiftool-perl`
-* `ffmpeg`
-* `mpv`
-* `sct`
-* `qutebrowser`
-* `higan`
-* `tldr` (then run tldr -u)
-* bullseye-backports: `pipx`
+* python3-pip
+* vim-nox
+* syncthing
+* kitty
+* restic
+* keepassxc
+* qemu-system
+* fzf
+* ufw (then run sudo ufw enable)
+* zsh
+* zsh-autosuggestions
+* zsh-syntax-highlighting
+* imagemagick
+* libimage-exiftool-perl
+* ffmpeg
+* mpv
+* sct
+* qutebrowser
+* higan
+* tldr (then run tldr -u)
+* bullseye-backports: pipx
 
 Those should already be present but better check:
 
