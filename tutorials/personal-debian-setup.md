@@ -1,6 +1,6 @@
 # Personal Debian setup
 
-This document is a step-by-step process (still WIP) to reproduce the setup I like on a fresh Debian install. As such, it is unlikely to fit your needs and preferences and is mainly aimed for me.
+This document is a step-by-step process (still WIP) to reproduce the setup I like for a fresh Debian install. As such, it is unlikely to fit your needs and preferences and is mainly aimed for me.
 
 ## Installing Debian stable with FDE
 
@@ -57,6 +57,7 @@ Let's now install base packages for this host: unless specified otherwise, those
 * htop
 * tree
 * tmux
+* curl
 * pulseeffects
 * rsync
 * ncdu
@@ -65,7 +66,7 @@ Let's now install base packages for this host: unless specified otherwise, those
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux pulseeffects rsync ncdu wipe tldr pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
@@ -168,13 +169,40 @@ For GPG:
 * Run `gpg --list-secret-keys` to check trust has changed
 * Delete keys in temporary location
 
-## Restic config and restore
-
 ## Sync main directories with syncthing
 
 The following directories should be synced with syncthing:
 
-* Lorem
+* TBA
+
+## Restic config and restore
+
+Restic's "key" is already present in `~/.dotfiles`, and its symlink can be found in `~/.config/restic/restic_key.gpg` after running the previous steps.
+
+You can use that key to decrypt restic's repo with the following flag:
+
+```bash
+restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.config/restic/restic_key.gpg" <rest-of-the-command>...
+```
+
+Since we're aiming for a fresh install, we're not going to restore the entire /home directory. Only the following should be restored:
+
+* `~/Documents`
+* `~/flashcards`
+* `~/ovelwiki`
+* `~/qemu`
+* `~/Videos`
+* `~/roms`
+
+The rest is either already present thanks to syncthing or located in the second drive — at the time of writing this document.
+
+The second drive — whatever its location is — can be restored entirely with the exception of the `Steam` directory. That one can be kept away unless you need to restore a save someday.
+
+Use the following to restore a specific file or directory with restic, which should also work nicely for the entire 2nd drive:
+
+```bash
+restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.config/restic/restic_key.gpg" -r /<path-of-restic-repo> restore latest --target /<where-to-restore-directory> --include /<path-of-directory-to-restore> 
+```
 
 ## Clone some repositories
 
@@ -190,9 +218,41 @@ git clone git@github.com:ovelny/ovelny.github.io.git
 ## Set up .vimrc and install vim plugins
 
 ```bash
+# Symlink vim config
 ln -s /home/<user>/code/vim-cursed/.vimrc /home/<user>/
+
+# vim-plug installation
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+Next, run vim and execute `:PlugInstall` to install all plugins listed in `~/.vimrc`.
+
+Finally, the YouCompleteMe plugin requires a few more steps for a full installation: https://github.com/ycm-core/YouCompleteMe#linux-64-bit
+
+Pylint and black are also required with the previous config:
+
+```bash
+python3 -m pip install --user pylint
+python3 -m pip install --user black
 ```
 
 ## Configure pulseeffects
 
+Enable equalizer and select gstreamer_dance in presets.
+
 ## Configure qutebrowser certs
+
+You know where to find your certs.
+
+```bash
+sudo apt install libnss3-tools
+
+certutil -d "sql:$HOME/.pki/nssdb" -A -i ~/Downloads/<your-burp-cert> -n "Burp Suite CA" -t C,,
+
+# Repeat last command for zaproxy cert and delete them from their temporary location
+```
+
+## Setup daily backups
+
+## Configure librewolf
