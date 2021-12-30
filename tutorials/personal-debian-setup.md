@@ -201,8 +201,15 @@ The second drive — whatever its location is — can be restored entirely with 
 Use the following to restore a specific file or directory with restic, which should also work nicely for the entire 2nd drive:
 
 ```bash
-restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.config/restic/restic_key.gpg" -r /<path-of-restic-repo> restore latest --target /<where-to-restore-directory> --include /<path-of-directory-to-restore> 
+
+# Grab the ID of the snapshot you wanna use
+restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.config/restic/restic_key.gpg" -r /<path-of-restic-repo> snapshots 
+
+# Restore a directory or file
+restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.config/restic/restic_key.gpg" -r /<path-of-restic-repo> restore <ID> --target /<where-to-restore-directory> --include /<path-of-directory-to-restore> 
 ```
+
+Keep in mind however that the absolute path is restored, not only the directory's content. This is how restic works and there is currently no way around it (except for mounting restic's repo somewhere, but I don't like that). Just `mv` the files accordingly and remove the emptied absolute path.
 
 ## Clone some repositories
 
