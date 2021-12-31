@@ -263,3 +263,93 @@ certutil -d "sql:$HOME/.pki/nssdb" -A -i ~/Downloads/<your-burp-cert> -n "Burp S
 ## Setup daily backups
 
 ## Configure librewolf
+
+* Add librewolf's repository and install it with these instructions: https://librewolf.net/installation/debian/
+
+* Install the following extensions:
+	* privacy badger (disable showing count of trackers)
+	* bot sentinel
+	* fraidycat (add all the sites you follow by importing fraidycat.json in ~/sync)
+	* wappalyzer (hide count of technologies found)
+	* buster captcha solver
+	* youtube nonstop
+	* foxyproxy standard
+	* gnome shell integration
+	* firefox multi-account containers (if compatible)
+	* sponsorblock for youtube (disable display of buttons)
+	* vimium-ff (change scroll speed to 70px and disable smooth scrolling)
+	* violentmonkey (hide scripts running count)
+
+### Import and configure userscripts with violentmonkey
+
+* Install the following scripts:
+	* https://greasyfork.org/en/scripts/423851-simple-youtube-age-restriction-bypass
+	* https://greasyfork.org/en/scripts/412178-youtube-dismiss-sign-in
+	* https://gist.github.com/ovelny/0c08956715f574ec155d257af15b9777
+
+### Foxyproxy configuration
+
+* Set the following proxy settings:
+	* city_ruins_zaproxy:
+	  * proxy type: HTTP
+		* IP address: 127.0.0.1
+		* Port 8081
+		* socks version: 5
+		* socks proxy? empty
+	* city_ruins_burpsuite:
+	  * proxy type: HTTP
+		* IP address: 127.0.0.1
+		* Port 8080
+		* socks version: 5
+		* socks proxy? empty
+
+### Librewolf settings
+
+* Enable compact mode:
+	* go to about:config and toggle browser.compactmode.show to true
+	* go to more tools > customize toolbars > density and enable compact mode
+* Enable dark theme:
+	* go to about:addons > themes > enable dark theme
+* Customize main settings:
+	* go to about:preferences
+	* check "open previous windows and tabs"
+	* check "always check if librewolf is your default browser" and enable as default
+	* in "home" tab, uncheck homepage content > web search (and everything else if checked)
+	* in "privacy and security" tab:
+		* uncheck "delete cookie and site data when LibreWolf is closed" in "Cookies and Site Data"
+		* select "remember history" in history section
+		* in certificates > view certificates, import burpsuite and zaproxy certificates
+		* allow certificates for websites only, not emails
+	* in "librewolf" tab:
+		* check "extensions & themes auto-update"
+		* uncheck "unable ipv6"
+		* check "restore previous session"
+		* uncheck "enable linux style copy/paste":
+			* uncheck middle mouse paste in details
+		* uncheck "advanced css styling"
+		* uncheck "peer connections"
+		* uncheck "screensharing"
+		* uncheck "geolocation data"
+		* check "hide canvas request popups"
+		* uncheck "serve DRM-restricted content"
+		* uncheck "window letterboxing"
+		* check "disable asm.js"
+		* uncheck "disable web assembly"
+		* uncheck "enable google safe browsing"
+		* uncheck "allow google safe browsing to view your downloads"
+		* uncheck "allow installation of other language packs"
+
+### Librewolf customization
+
+* In more tools > customize toolbar:
+	* select compact mode (enabled with special flag shown earlier)
+	* in toolbars > bookmarks toolbar, select "never show"
+	* uncheck title bar
+	* hide all extensions (in overflow menu) except:
+		* ublock
+		* vimium
+		* foxyproxy
+		* wappalyzer
+		* (in this order, left to right)
+	* remove downloads icon in toolbar
+	* add "forget" icon between extensions and overflow icon
