@@ -383,4 +383,4 @@ You should also check if all the paths in `backup_moon` are still the same with 
 
 ## All done
 
-Congrats, you have a system you can call home now. Grab a coffee and enjoy.
+Congrats, add a wallpaper and you have a system you can call home now. Grab a coffee and enjoy.
