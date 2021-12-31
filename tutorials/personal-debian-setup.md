@@ -1,6 +1,6 @@
 # Personal Debian setup
 
-This document is a step-by-step process (still WIP) to reproduce the setup I like for a fresh Debian install. As such, it is unlikely to fit your needs and preferences and is mainly aimed for me.
+This document is a step-by-step process to reproduce the setup I like for a fresh Debian install. As such, it is unlikely to fit your needs and preferences and is mainly aimed for me.
 
 ## Installing Debian stable with FDE
 
@@ -96,7 +96,7 @@ Those programs are to be found manually on the interwebs, installation is straig
 * Mullvad
 * Steam
 * Discord
-* Librewolf
+* Librewolf (see last section)
 
 ## Change default programs
 
@@ -116,7 +116,7 @@ Start by restoring dotfiles: we'll have to launch syncthing manually once, befor
 
 Run `syncthing` (remove default folder too) and start syncing the `~/.dotfiles` directory. In advanced options, choose to ignore syncing permissions.
 
-Then sync the `~/bin` in the same way and run `chmod +x ~/bin/dot`.
+Then sync the `~/bin` in the same way and run `chmod +x ~/bin/dot`. Also sync the `~/sync` directory while you're at it.
 
 Run `~/bin/dot install` and reboot. The updated zsh theme and automatic syncthing startup should be proof enough that your dotfiles are restored.
 
@@ -169,12 +169,6 @@ For GPG:
 * Run `gpg --list-secret-keys` to check trust has changed
 * Delete keys in temporary location
 
-## Sync main directories with syncthing
-
-The following directories should be synced with syncthing:
-
-* TBA
-
 ## Restic config and restore
 
 Restic's "key" is already present in `~/.dotfiles`, and its symlink can be found in `~/.config/restic/restic_key.gpg` after running the previous steps.
@@ -184,6 +178,8 @@ You can use that key to decrypt restic's repo with the following flag:
 ```bash
 restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.config/restic/restic_key.gpg" <rest-of-the-command>...
 ```
+
+Ensure that your restic repository is intact by running `restic --password-command "<...>" -r /<repo-path> check`.
 
 Since we're aiming for a fresh install, we're not going to restore the entire /home directory. Only the following should be restored:
 
@@ -211,6 +207,29 @@ restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.
 
 Keep in mind however that the absolute path is restored, not only the directory's content. This is how restic works and there is currently no way around it (except for mounting restic's repo somewhere, but I don't like that). Just `mv` the files accordingly and remove the emptied absolute path.
 
+## Symlink Music directory
+
+Your music directory is currently located on your secondary hard drive: after restic restore, delete `~/Music` and use a symlink to said drive's directory.
+
+```bash
+ln -s /<second-drive-path>/Music /home/ovelny/Music
+```
+
+## Sync main directories with syncthing
+
+The following directories should be synced with syncthing:
+
+* `~/.dotfiles` (already done)
+* `~/bin` (already done)
+* `~/ovelwiki`
+* `~/Music/music-essentials` (can be synced to `~/Music` previous symlink even if syncthing might complain)
+* `~/Pictures`
+* `~/sync` (already done)
+
+For those that are not synced already, the most pratical way is to delete the default directory if it already exists (like `~/Pictures`). That way you're sure you won't sync anything the other way around, from your new machine to the "original" device — a bit brutal but feels safer.
+
+For all directories, make sure to disable syncing permissions in advanced options.
+
 ## Clone some repositories
 
 ```bash
@@ -226,7 +245,7 @@ git clone git@github.com:ovelny/ovelny.github.io.git
 
 ```bash
 # Symlink vim config
-ln -s /home/<user>/code/vim-cursed/.vimrc /home/<user>/
+ln -s /home/ovelny/code/vim-cursed/.vimrc /home/ovelny/.vimrc
 
 # vim-plug installation
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -261,6 +280,14 @@ certutil -d "sql:$HOME/.pki/nssdb" -A -i ~/Downloads/<your-burp-cert> -n "Burp S
 ```
 
 ## Setup daily backups
+
+The `backup_moon` script is already present in `~/bin`. Ensure that it is executable with `chmod +x ~/bin/backup_moon` and add the following line with `crontab -e`:
+
+```bash
+0 4 * * * /home/ovelny/bin/backup_moon
+```
+
+You should also check if all the paths in `backup_moon` are still the same with your new install, and change them accordingly.
 
 ## Configure librewolf
 
@@ -353,3 +380,7 @@ certutil -d "sql:$HOME/.pki/nssdb" -A -i ~/Downloads/<your-burp-cert> -n "Burp S
 		* (in this order, left to right)
 	* remove downloads icon in toolbar
 	* add "forget" icon between extensions and overflow icon
+
+## All done
+
+Congrats, you have a system you can call home now. Grab a coffee and enjoy.
