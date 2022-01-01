@@ -306,6 +306,7 @@ You should also check if all the paths in `backup_moon` are still the same with 
 	* sponsorblock for youtube (disable display of buttons)
 	* vimium-ff (change scroll speed to 70px and disable smooth scrolling)
 	* violentmonkey (hide scripts running count)
+  * twemex
 
 ### Import and configure userscripts with violentmonkey
 
