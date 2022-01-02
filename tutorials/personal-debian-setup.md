@@ -97,6 +97,8 @@ Those programs are to be found manually on the interwebs, installation is straig
 * Steam
 * Discord
 * Librewolf (see last section)
+* Scrcpy
+* Ungoogled-chromium
 
 ## Change default programs
 
