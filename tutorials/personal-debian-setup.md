@@ -112,7 +112,7 @@ chsh -s $(which zsh)
 
 Restart shell and check with `echo $ZSH_VERSION` that it worked.
 
-## Disable wayland
+## Disable wayland
 
 Using wayland with gnome is asking for trouble, even in 2022. To disable it, edit `/etc/gdm3/daemon.conf` and uncomment the `WaylandEnable=false`, save and reboot.
 
