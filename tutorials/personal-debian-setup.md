@@ -397,6 +397,10 @@ You should also check if all the paths in `backup_moon` are still the same with 
 	* remove downloads icon in toolbar
 	* add "forget" icon between extensions and overflow icon
 
+## Changing /etc/hosts
+
+Consider changing `/etc/hosts` as described in your personal wiki.
+
 ## All done
 
 Congrats, add a wallpaper and you have a system you can call home now. Grab a coffee and enjoy.
