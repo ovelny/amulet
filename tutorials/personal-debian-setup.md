@@ -63,10 +63,14 @@ Let's now install base packages for this host: unless specified otherwise, those
 * ncdu
 * wipe
 * tldr (then run tldr -u)
+* ruby-dev
+* xclip
+* screenfetch
+* gparted
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
@@ -99,10 +103,31 @@ Those programs are to be found manually on the interwebs, installation is straig
 * Librewolf (see last section)
 * Scrcpy
 * Ungoogled-chromium
+* Signal-desktop
 
 ## Take care of graphics drivers
 
 Depending on your machine, setting up graphics drivers will probably need to enable nonfree and contrib repos. Check document online for Debian + your graphic card.
+
+## Add noatime options for disks
+
+Append the `noatime` option to each disk listed in `/etc/fstab`. Easy optimization no matter if you're using a SSD or HDD. Reboot and continue.
+
+## Disable system sounds
+
+In `sound`, mute system sounds. That's it.
+
+## Adjust mouse sensitivity
+
+Self-explanatory.
+
+## Change power menu settings
+
+In `power`, choose:
+
+* Blank screen: never
+* Automatic suspend: off
+* Power button behavior: power off
 
 ## Change default programs
 
