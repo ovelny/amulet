@@ -112,6 +112,10 @@ chsh -s $(which zsh)
 
 Restart shell and check with `echo $ZSH_VERSION` that it worked.
 
+## Disable wayland
+
+Using wayland with gnome is asking for trouble, even in 2022. To disable it, edit `/etc/gdm3/daemon.conf` and uncomment the `WaylandEnable=false`, save and reboot.
+
 ## Restore dotfiles
 
 Start by restoring dotfiles: we'll have to launch syncthing manually once, before the autostart file takes over after this step.
@@ -383,6 +387,10 @@ You should also check if all the paths in `backup_moon` are still the same with 
 		* (in this order, left to right)
 	* remove downloads icon in toolbar
 	* add "forget" icon between extensions and overflow icon
+
+### Take care of graphics drivers
+
+Depending on your machine, setting up graphics drivers will probably need to enable nonfree and contrib repos. Check document online for Debian + your graphic card.
 
 ## All done
 
