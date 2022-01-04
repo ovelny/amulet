@@ -139,7 +139,7 @@ Run `~/bin/dot install` and reboot. The updated zsh theme and automatic syncthin
 * Set lock screen to ctrl + alt + l
 * Set maximize window to ctrl + alt + y
 
-## Automount drives
+## Automount drives
 
 Set your secondary hard drive and others to automount: when using `gnome-disks`, this is simply done by selecting your drive > click on settings > edit mount options > disable user session defaults. Reboot to check this is working once done.
 
