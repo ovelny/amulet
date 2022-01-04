@@ -31,6 +31,7 @@ Select your device, confirm and then follow the next steps:
 	* Choose "Erase data: yes"
 	* Choose "done setting up the partition"
 * Encrypt the main partition:
+  * Choose "configure encrypted volumes"
 	* Choose "yes"
   * Choose "create encrypted volumes"
   * Choose your main partition and press "continue"
