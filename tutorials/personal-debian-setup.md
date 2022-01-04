@@ -201,7 +201,6 @@ Since we're aiming for a fresh install, we're not going to restore the entire /h
 
 * `~/Documents`
 * `~/flashcards`
-* `~/ovelwiki`
 * `~/qemu`
 * `~/Videos`
 * `~/roms`
