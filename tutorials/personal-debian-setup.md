@@ -100,6 +100,10 @@ Those programs are to be found manually on the interwebs, installation is straig
 * Scrcpy
 * Ungoogled-chromium
 
+## Take care of graphics drivers
+
+Depending on your machine, setting up graphics drivers will probably need to enable nonfree and contrib repos. Check document online for Debian + your graphic card.
+
 ## Change default programs
 
 Set browser to librewolf and music + video to mpv. That's it.
@@ -393,10 +397,6 @@ You should also check if all the paths in `backup_moon` are still the same with 
 		* (in this order, left to right)
 	* remove downloads icon in toolbar
 	* add "forget" icon between extensions and overflow icon
-
-## Take care of graphics drivers
-
-Depending on your machine, setting up graphics drivers will probably need to enable nonfree and contrib repos. Check document online for Debian + your graphic card.
 
 ## All done
 
