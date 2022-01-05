@@ -189,6 +189,7 @@ Next:
 
 * Go to gnome tweaks > appearance > applications and select adwaita dark.
 * Go to gnome tweaks > fonts and select hinting: full and antialiasing: subpixel.
+* Go to gnome tweaks > top bar and disable "activities overview hot corner"
 * Go to accessibility > repeat keys and reduce repeat delay (roughly by half).
 
 ## Restore SSH and GPG keys
