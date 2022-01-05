@@ -280,8 +280,8 @@ mkdir ~/code && cd ~/code
 git clone git@github.com:ovelny/vim-cursed.git
 git clone git@github.com:ovelny/amulet.git
 git clone git@github.com:ovelny/vessel.git
-cd vessel && mkdir output && cd output
-git clone git@github.com:ovelny/ovelny.github.io.git
+cd vessel && mkdir output
+git clone git@github.com:ovelny/ovelny.github.io.git output
 ```
 
 ## Set up .vimrc and install vim plugins
