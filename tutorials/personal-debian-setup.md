@@ -96,6 +96,12 @@ sudo gem install nanoc fastimage exifr redcarpet rouge nokogiri rest-client buil
 for pkg in "glances" "yt-dlp" "frida-tools" "objection" "pex"; do pipx install "$pkg"; done
 ```
 
+Also this, which doesn't work with pipx at the moment:
+
+```bash
+python3 -m pip install --user em-keyboard
+```
+
 ## Other packages fetched elsewhere
 
 Those programs are to be found manually on the interwebs, installation is straightforward:
