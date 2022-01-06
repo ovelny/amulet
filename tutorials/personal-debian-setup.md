@@ -432,6 +432,12 @@ You should also check if all the paths in `backup_moon` are still the same with 
 	* remove downloads icon in toolbar
 	* add "forget" icon between extensions and overflow icon
 
+## Configure ungoogled-chromium
+
+I mainly use chromium to run discord in app mode: the desktop app is slow as molasses and a hassle for my use case.
+
+Discord is however still slow in chromium with default settings: disable hardware acceleration and while you're at it, auto clearing of cache and cookies when closing all windows.
+
 ## Changing /etc/hosts
 
 Consider changing `/etc/hosts` as described in your personal wiki.
