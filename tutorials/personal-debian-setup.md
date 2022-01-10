@@ -69,10 +69,11 @@ Let's now install base packages for this host: unless specified otherwise, those
 * gparted
 * nmap
 * grc
+* cargo
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
@@ -327,6 +328,14 @@ certutil -d "sql:$HOME/.pki/nssdb" -A -i ~/Downloads/<your-burp-cert> -n "Burp S
 
 # Repeat last command for zaproxy cert and delete them from their temporary location
 ```
+
+## Configure qutebrowser adblocking
+
+Qutebrowser now integrates Brave's adblock, which makes it a very viable choice for browsing everything — even youtube.
+
+Things are already set up in dotfiles, but you need to install python-adblock to make it all work: https://github.com/ArniDagur/python-adblock
+
+Clone the repo in `~/code` and run `python3 -m pip install --user .` in the root directory. Then run `:adblock-update` and `:restart` in qutebrowser and you should be all set.
 
 ## Setup daily backups
 
