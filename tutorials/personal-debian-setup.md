@@ -345,7 +345,15 @@ The `backup_moon` script is already present in `~/bin`. Ensure that it is execut
 0 4 * * * /home/ovelny/bin/backup_moon
 ```
 
-You should also check if all the paths in `backup_moon` are still the same with your new install, and change them accordingly.
+While you're at it, also add the following line with `crontab -e`:
+
+```bash
+* * * * * /usr/bin/sct 4500
+```
+
+This sets the color temperature of your screen to a warmer one. This line is also ran during startup with your dotfiles, but weird X11 behavior with videos, games etc can reset that setting to the default temp sooo. I'm taking the nuclear option here, and let it re-run every minute.
+
+You should also check if all the paths in `backup_moon` are still the same with your new install to manage backups, and change them accordingly.
 
 ## Configure librewolf
 
