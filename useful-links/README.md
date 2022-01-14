@@ -67,6 +67,7 @@
 * Application security wiki: https://appsecwiki.com/#/
 * OSCP goldmine: http://0xc0ffee.io/blog/OSCP-Goldmine
 * Code pastebin: https://bpaste.net/
+* Wildcard DNS for any IP address (useful for SSRFs): https://nip.io/
 
 ## Exploitation tools
 
