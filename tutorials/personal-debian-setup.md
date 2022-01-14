@@ -140,7 +140,7 @@ In `power`, choose:
 
 ## Change default programs
 
-Set browser to librewolf and music + video to mpv. That's it.
+Set browser to qutebrowser and music + video to mpv. That's it.
 
 ## Change shell to zsh
 
