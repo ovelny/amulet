@@ -74,11 +74,18 @@ Let's now install base packages for this host: unless specified otherwise, those
 * libjs-pdf
 * pdftk
 * scdoc
+* unrar
+* bitlbee
+* bitlbee-dev
+* bitlbee-plugin-mastodon
+* autoconf
+* libtool
+* libglib2.0-dev
 * gawk
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc gawk pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
@@ -170,6 +177,26 @@ Run `syncthing` (remove default folder too) and start syncing the `~/.dotfiles` 
 Then sync the `~/bin` in the same way and run `chmod +x ~/bin/dot`. Also sync the `~/sync` directory while you're at it.
 
 Run `~/bin/dot install` and reboot. The updated zsh theme and automatic syncthing startup should be proof enough that your dotfiles are restored.
+
+## Set up bitlbee
+
+Uncomment and change the following lines in `/etc/bitlbee/bitlbee.conf`:
+
+```text
+DaemonInterface = 127.0.0.1
+DaemonPort = 6667
+```
+
+Restore the `/var/lib/bitlbee/ovelny.xml` file (you know where to find it) and then run `systemctl enable bitlbee` and `systemctl restart bitlbee`. The only thing left is to set up the discord plugin, follow the instructions here: https://github.com/sm00th/bitlbee-discord
+
+For weird reasons however, the plugin files have unnecessary permissions after install, fix this with the following:
+
+```bash
+sudo chmod 644 /usr/lib/bitlbee/discord.so
+sudo chmod 644 /usr/lib/bitlbee/discord.la
+```
+
+Everything else should be working with the dotfiles you restored earlier, which include irssi config files.
 
 ## Configure custom shortcuts
 
