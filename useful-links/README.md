@@ -69,6 +69,7 @@
 * Code pastebin: https://bpaste.net/
 * Wildcard DNS for any IP address (useful for SSRFs): https://nip.io/
 * Sqlmap documentation: http://www.it-docs.net/ddata/4956.pdf
+* Unicode tools: http://qaz.wtf/u/
 
 ## Exploitation tools
 
