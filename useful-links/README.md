@@ -31,6 +31,7 @@
 * Google CTFs: https://capturetheflag.withgoogle.com/#beginners/
 * Reverse engineering for beginners: https://www.begin.re/
 * Intro to x86_64 reverse engineering: https://leotindall.com/tutorial/an-intro-to-x86_64-reverse-engineering/
+* Pentest reports: https://cure53.de/#publications
 
 ## Programming and databases
 
