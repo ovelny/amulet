@@ -82,12 +82,13 @@ Let's now install base packages for this host: unless specified otherwise, those
 * libtool
 * libglib2.0-dev
 * gawk
+* okular
 * libncurses5
 * libgraph-easy-perl
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk libncurses5 libgraph-easy-perl pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk okular libncurses5 libgraph-easy-perl pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
@@ -107,7 +108,7 @@ sudo gem install nanoc fastimage exifr redcarpet rouge nokogiri rest-client buil
 ## Python packages with pipx
 
 ```bash
-for pkg in "glances" "yt-dlp" "frida-tools" "objection" "pex" "toot"; do pipx install "$pkg"; done
+for pkg in "glances" "yt-dlp" "frida-tools" "objection" "pex" "toot" "b2"; do pipx install "$pkg"; done
 ```
 
 Also this, which doesn't work with pipx at the moment:
@@ -289,7 +290,7 @@ restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.
 restic --password-command "gpg --decrypt --default-recipient-self /home/ovelny/.config/restic/restic_key.gpg" -r /<path-of-restic-repo> restore <ID> --target /<where-to-restore-directory> --include /<path-of-directory-to-restore> 
 ```
 
-Keep in mind however that the absolute path is restored, not only the directory's content. This is how restic works and there is currently no way around it (except for mounting restic's repo somewhere, but I don't like that). Just `mv` the files accordingly and remove the emptied absolute path.
+Keep in mind however that the absolute path is restored, not only the directory's content. This is how restic works and there is currently no way around it (except for mounting restic's repo somewhere else, but I don't like that). Just `mv` the files accordingly and remove the emptied absolute path.
 
 ## Symlink Music directory
 
@@ -387,7 +388,17 @@ While you're at it, also add the following line with `crontab -e`:
 
 This sets the color temperature of your screen to a warmer one. This line is also ran during startup with your dotfiles, but weird X11 behavior with videos, games etc can reset that setting to the default temp sooo. I'm taking the nuclear option here, and let it re-run every minute.
 
-You should also check if all the paths in `backup_moon` are still the same with your new install to manage backups, and change them accordingly.
+You should also check if all the paths in `backup_moon` are still the same with your new install to manage backups, and change them accordingly. Also check `~/bin/restic` and `~/bin/restic-b2` which are just wrappers to easily run restic with its key. Paths might need to be updated there too.
+
+## Configure b2 and setup weekly b2 backups
+
+Run the following command to enter b2 credentials:
+
+```bash
+b2 authorize_account
+```
+
+After this step, you can run `b2 get-account-info` to check if everything is working.
 
 ## Configure librewolf
 
