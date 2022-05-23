@@ -51,7 +51,6 @@ Let's now install base packages for this host: unless specified otherwise, those
 * ffmpeg
 * mpv
 * sct
-* qutebrowser
 * higan
 * age
 * htop
@@ -87,11 +86,12 @@ Let's now install base packages for this host: unless specified otherwise, those
 * gamemode
 * ncal
 * shellcheck
+* asciidoc
 * libgraph-easy-perl
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk okular libncurses5 gamemode ncal shellcheck libgraph-easy-perl pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk okular libncurses5 gamemode ncal shellcheck asciidoc libgraph-easy-perl pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
@@ -119,6 +119,14 @@ Also this, which doesn't work with pipx at the moment:
 ```bash
 python3 -m pip install --user em-keyboard
 ```
+
+## Installing qutebrowser in a virtualvenv
+
+Qutebrowser can be installed from Debian's repositories, but it is usually fairly outdated and not covered by Debian's security patches. Yikes.
+
+Installing it in a venv is however very easy: https://github.com/qutebrowser/qutebrowser/blob/master/doc/install.asciidoc#tox
+
+Clone the git repository in `~/code` and follow instructions. A wrapper script in `~/bin` is already present to call qutebrowser from the CLI once installed.
 
 ## Other packages fetched elsewhere
 
