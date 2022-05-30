@@ -128,6 +128,15 @@ Installing it in a venv is however very easy: https://github.com/qutebrowser/qut
 
 Clone the git repository in `~/code` and follow instructions. A wrapper script in `~/bin` is already present to call qutebrowser from the CLI once installed.
 
+Making it the default browser to open links and such can be an hassle, and making symlinks directly seems to work better than using `update-alternatives`:
+
+```bash
+sudo rm /etc/alternatives/gnome-www-browser
+sudo ln -s /home/ovelny/bin/qutebrowser /etc/alternatives/gnome-www-browser
+sudo rm /etc/alternatives/x-www-browser
+sudo ln -s /home/ovelny/bin/qutebrowser /etc/alternatives/x-www-browser
+```
+
 ## Other packages fetched elsewhere
 
 Those programs are to be found manually on the interwebs, installation is straightforward:
