@@ -137,6 +137,12 @@ sudo rm /etc/alternatives/x-www-browser
 sudo ln -s /home/ovelny/bin/qutebrowser /etc/alternatives/x-www-browser
 ```
 
+You also have to make it a default browser with xdg, year of the linux desktop and all that. A `qutebrowser.desktop` is already present in your dotfiles, so you only have to run the following command:
+
+```bash
+xdg-settings set default-web-browser qutebrowser.desktop
+```
+
 ## Other packages fetched elsewhere
 
 Those programs are to be found manually on the interwebs, installation is straightforward:
