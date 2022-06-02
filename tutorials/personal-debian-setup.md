@@ -111,13 +111,26 @@ sudo gem install nanoc fastimage exifr redcarpet rouge nokogiri rest-client buil
 ## Python packages with pipx
 
 ```bash
-for pkg in "glances" "yt-dlp" "frida-tools" "objection" "pex" "toot" "b2"; do pipx install "$pkg"; done
+for pkg in "glances" "yt-dlp" "frida-tools" "objection" "pex" "tuir" "b2" "rainbowstream"; do pipx install "$pkg"; done
 ```
 
 Also this, which doesn't work with pipx at the moment:
 
 ```bash
 python3 -m pip install --user em-keyboard
+```
+
+## Symlink youtube-dl to yt-dlp
+
+Streaming Youtube videos through youtube-dl with mpv can be slow: there are command flags to use yt-dlp instead, but this doesn't always work with old versions of mpv.
+
+The most straightforward option is to just symlink `youtube-dl` to `yt-dlp`:
+
+```bash
+which youtube-dl # /usr/bin/youtube-dl
+which yt-dlp # /home/ovelny/.local/bin/yt-dlp
+sudo rm /usr/bin/youtube-dl
+sudo ln -s /home/ovelny/.local/bin/yt-dlp /usr/bin/youtube-dl
 ```
 
 ## Installing qutebrowser in a virtualvenv
@@ -397,6 +410,8 @@ Qutebrowser now integrates Brave's adblock, which makes it a very viable choice 
 Things are already set up in dotfiles, but you need to install python-adblock to make it all work: https://github.com/ArniDagur/python-adblock
 
 Clone the repo in `~/code` and run `python3 -m pip install --user .` in the root directory. Then run `:adblock-update` and `:restart` in qutebrowser and you should be all set.
+
+Keep in mind that with qutebrowser's config file present in your dotfiles, you are also blocking some websites in favor of TUIs (twitter, reddit, etc). Those can be found in `~/.config/qutebrowser/blocked-hosts`.
 
 ## Setup daily backups
 
