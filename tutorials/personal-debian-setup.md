@@ -354,6 +354,17 @@ For those that are not synced already, the most pratical way is to delete the de
 
 For all directories, make sure to disable syncing permissions in advanced options.
 
+## Connect to the TUIs
+
+Connect / login to the TUIs you're using:
+
+* discord
+* twitter
+* mastodon
+* reddit
+
+All of those are actual aliases present in `~/bin`, for rainbowstream, tuir, etc.
+
 ## Clone some repositories
 
 ```bash
