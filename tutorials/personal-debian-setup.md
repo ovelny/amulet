@@ -88,10 +88,12 @@ Let's now install base packages for this host: unless specified otherwise, those
 * shellcheck
 * asciidoc
 * libgraph-easy-perl
+* libldap2-dev
+* libidn11-dev
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk okular libncurses5 gamemode ncal shellcheck asciidoc libgraph-easy-perl pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk okular libncurses5 gamemode ncal shellcheck asciidoc libgraph-easy-perl libldap2-dev libidn11-dev pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
@@ -108,10 +110,16 @@ Those packages should already be present but check anyway:
 sudo gem install nanoc fastimage exifr redcarpet rouge nokogiri rest-client builder adsf puma
 ```
 
+Also get the following app as user:
+
+```bash
+gem install --user-install twterm
+```
+
 ## Python packages with pipx
 
 ```bash
-for pkg in "glances" "yt-dlp" "frida-tools" "objection" "pex" "tuir" "b2" "rainbowstream"; do pipx install "$pkg"; done
+for pkg in "glances" "yt-dlp" "frida-tools" "objection" "pex" "tuir" "b2"; do pipx install "$pkg"; done
 ```
 
 Also this, which doesn't work with pipx at the moment:
