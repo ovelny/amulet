@@ -371,7 +371,7 @@ Connect / login to the TUIs you're using:
 * mastodon
 * reddit
 
-All of those are actual aliases present in `~/bin`, for rainbowstream, tuir, etc.
+All of those are actual aliases present in `~/bin`, for twterm, tuir, etc.
 
 ## Clone some repositories
 
@@ -553,11 +553,11 @@ After this step, you can run `b2 get-account-info` to check if everything is wor
 	* remove downloads icon in toolbar
 	* add "forget" icon between extensions and overflow icon
 
-## Configure ungoogled-chromium
+## Configure a firefox profile to run Discord as an app
 
-I mainly use chromium to run discord in app mode: the desktop app is slow as molasses and a hassle for my use case.
+Follow the instructions here, it's pretty straightforward: https://web.archive.org/web/20220605002750/https://www.akselmo.dev/2022/06/05/Discord-Firefox-window.html
 
-Discord is however still slow in chromium with default settings: disable hardware acceleration and while you're at it, auto clearing of cache and cookies when closing all windows.
+(Thanks a lot to Akselmo for providing this guide!)
 
 ## Changing /etc/hosts
 
