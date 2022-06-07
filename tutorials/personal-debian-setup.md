@@ -170,11 +170,10 @@ Those programs are to be found manually on the interwebs, installation is straig
 
 * Mullvad
 * Steam
-* Discord
 * Librewolf (see last section)
 * Scrcpy
-* Ungoogled-chromium
 * Signal-desktop
+* Croc
 
 ## Take care of graphics drivers
 
