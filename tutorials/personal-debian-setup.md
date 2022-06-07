@@ -555,9 +555,15 @@ After this step, you can run `b2 get-account-info` to check if everything is wor
 
 ## Configure a firefox profile to run Discord as an app
 
-Follow the instructions here, it's pretty straightforward: https://web.archive.org/web/20220605002750/https://www.akselmo.dev/2022/06/05/Discord-Firefox-window.html
+Follow the instructions here: https://web.archive.org/web/20220605002750/https://www.akselmo.dev/2022/06/05/Discord-Firefox-window.html
 
 (Thanks a lot to Akselmo for providing this guide!)
+
+In `about:config`, also set `layout.spellcheckDefault` to `0` and add the following line in `userChrome.css`:
+
+```css
+#statuspanel {opacity: 0 !important;}
+```
 
 ## Changing /etc/hosts
 
