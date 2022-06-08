@@ -91,10 +91,11 @@ Let's now install base packages for this host: unless specified otherwise, those
 * libgraph-easy-perl
 * libldap2-dev
 * libidn11-dev
+* xsel
 * bullseye-backports: pipx
 
 ```bash
-sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk okular libncurses5 libncurses5-dev gamemode ncal shellcheck asciidoc libgraph-easy-perl libldap2-dev libidn11-dev pipx/bullseye-backports && sudo ufw enable && tldr -u
+sudo apt install python3-pip vim-nox syncthing kitty restic keepassxc qemu-system fzf ufw zsh zsh-autosuggestions zsh-syntax-highlighting imagemagick libimage-exiftool-perl ffmpeg mpv sct qutebrowser higan age htop tree tmux curl pulseeffects rsync ncdu wipe tldr ruby-dev xclip screenfetch gparted nmap grc cargo gpick libjs-pdf pdftk scdoc unrar bitlbee bitlbee-dev bitlbee-plugin-mastodon autoconf libtool libglib2.0-dev gawk okular libncurses5 libncurses5-dev gamemode ncal shellcheck asciidoc libgraph-easy-perl libldap2-dev libidn11-dev xsel pipx/bullseye-backports && sudo ufw enable && tldr -u
 ```
 
 Those packages should already be present but check anyway:
